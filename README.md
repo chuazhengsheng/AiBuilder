@@ -2,6 +2,8 @@
 
 A company-challenge prototype for reviewing potentially sensitive details before creating an edited text copy.
 
+The submitted walkthrough is available at `demo/Veil-Challenge-Walkthrough.mp4`.
+
 ## Use
 
 Open the private hosted app, or serve `dist/` with any static web server and open its local address. Try the fictional example memo first. Import TXT, Markdown, DOCX or a PDF with selectable text, review every suggested detail, add internal terms, inspect the preview and confirm a full-document review before exporting.
