@@ -4,6 +4,44 @@ A company-challenge prototype for reviewing potentially sensitive details before
 
 The submitted walkthrough is available at `demo/Veil-Challenge-Walkthrough.mp4`.
 
+## Quick start on Windows
+
+### 1. Install Python
+
+1. Go to the official [Python downloads page](https://www.python.org/downloads/).
+2. Download and run the recommended Windows installer or Python Install Manager.
+3. If the installer shows **Add Python to PATH**, select it before installing.
+4. Close and reopen PowerShell after installation.
+5. Check that Python is available:
+
+```powershell
+py --version
+```
+
+If `py` is not recognised, try:
+
+```powershell
+python --version
+```
+
+On a company-managed computer, install Python through your approved Software Center or ask IT if installation is restricted.
+
+### 2. Clone and open Veil
+
+```powershell
+git clone https://github.com/chuazhengsheng/AiBuilder.git
+cd AiBuilder
+py -m http.server 8765 --directory dist
+```
+
+If the `py` command did not work in step 1 but `python` did, start the app with:
+
+```powershell
+python -m http.server 8765 --directory dist
+```
+
+Open <http://localhost:8765> in a browser and select **Open example memo**. Keep the PowerShell window open while using Veil. Press **Ctrl+C** in that window when you want to stop the app.
+
 ## Use
 
 Open the private hosted app, or serve `dist/` with any static web server and open its local address. Try the fictional example memo first. Import TXT, Markdown, DOCX or a PDF with selectable text, review every suggested detail, add internal terms, inspect the preview and confirm a full-document review before exporting.

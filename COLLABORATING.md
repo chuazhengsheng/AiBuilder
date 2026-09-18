@@ -4,13 +4,26 @@ This repository preserves the first working Veil challenge prototype. Applicatio
 
 ## Run locally
 
-Serve `dist` with a static web server. With Python installed, run:
+Install Python first if it is not already available:
+
+1. Download the recommended Windows installer or Python Install Manager from <https://www.python.org/downloads/>.
+2. Run it. If the installer shows **Add Python to PATH**, select that option.
+3. Close and reopen PowerShell, then run `py --version` to verify the installation. If `py` is unavailable, try `python --version`.
+4. On a company-managed computer, use the approved Software Center or ask IT if software installation is restricted.
+
+From the cloned repository, serve `dist` with:
+
+```
+py -m http.server 8765 --directory dist
+```
+
+If only the `python` command worked during verification, use:
 
 ```
 python -m http.server 8765 --directory dist
 ```
 
-Then visit http://localhost:8765 and select Open example memo. PDF import requires an HTTP server rather than opening index.html as a local file. All document-processing dependencies are included.
+Then visit http://localhost:8765 and select Open example memo. Keep the terminal open while using the app and press Ctrl+C to stop it. PDF import requires an HTTP server rather than opening index.html as a local file. All document-processing dependencies are included.
 
 ## Develop a version
 
