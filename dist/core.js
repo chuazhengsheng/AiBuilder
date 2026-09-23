@@ -9,7 +9,7 @@
   for(const m of text.matchAll(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi))add(m[0],'email');
   for(const m of text.matchAll(/\b[STFGM]\d{7}[A-Z]\b/gi))add(m[0],'id');
   for(const m of text.matchAll(/(?<![\w])(?:\+65[ -]?)?[689]\d{3}[ -]?\d{4}(?!\d)/g))add(m[0],'phone');
-  for(const m of text.matchAll(/(?:S\$|SGD\s*|\$)\s*\d[\d,]*(?:\.\d{2})?/g))add(m[0],'amount');
+  for(const m of text.matchAll(/(?:S\$|US\$|SGD|USD|\$)\s*\d(?:[\d,]*\d)?(?:\.\d+)?(?:[a-z]+|\s(?:k|m|mn|mil|mio|b|bn|bil|thousand|million|billion|trillion)\b)?/gi))add(m[0],'amount');
   for(const m of text.matchAll(/^(?:Prepared by|Name|Employee|Applicant|Officer|Patient|Contact person)\s*:\s*([^\n\r,;|]{2,70})/gmi))add(m[1],'person');
   custom.filter(Boolean).forEach(v=>add(v,'custom'));
   const counters={};
