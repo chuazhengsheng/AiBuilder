@@ -1,0 +1,141 @@
+VEIL — 3-MINUTE PITCH SCRIPT (DRAFT v2 — narrative structure)
+Audience: senior/higher management at an organisation running air-gapped environments across
+different sensitivity classes (e.g. a high-side and a lower-side network with no connectivity
+between them).
+
+STRUCTURE: hook (vulnerability) -> problem (human fallibility) -> reveal (VEIL, key
+differentiator) -> architecture/security -> brief demo (can be mocked) -> summary -> credits.
+This replaces the flat Q&A ordering from v1. Every one of the 7 required talking points is still
+answered — see the [Q#] tag on each section for where.
+
+IMPORTANT — keep this framing honest throughout: VEIL is decision support for the person doing
+the review. It does not itself authorise a release or change a document's classification, and it
+does not replace your organisation's existing approval process. That line is built into the REVEAL
+section below as "it doesn't decide for you" — don't let editing soften it into implying VEIL signs
+off on anything.
+
+============================================================
+0. HOOK
+============================================================
+[~15 sec / ~35 words]
+
+One email. One report, sent to the wrong side of the boundary. One detail someone missed. That's
+all it takes for a career-ending data leak — and that risk is sitting inside every document we
+send out of a sensitive environment, every single day.
+
+SHOW: Cold open — dark title card or a blurred document, no app UI yet.
+ON-SCREEN TEXT: "One missed detail. One career-ending leak."
+
+============================================================
+1. THE PROBLEM — covers [Q2: why] + [Q3: what problem]
+============================================================
+[~30 sec / ~70 words]
+
+Desensitising a document by hand is slow enough on its own — someone has to read every line and
+catch anything sensitive before it moves. But the real danger isn't the effort. It's what a human
+reviewer misses: an unlabeled name, a detail with no obvious pattern. Or worse — a name kept in
+one place and a figure kept in another, each looking harmless alone, but together pointing
+straight at one person, one deal. Once that crosses the boundary, you can't pull it back.
+
+SHOW: A document with an obviously-labeled name masked, but a bare surname and a dollar figure
+still sitting in plain text elsewhere in the same document.
+ON-SCREEN TEXT: "Alone: harmless. Together: identifiable. And you can't un-send it."
+
+============================================================
+2. THE REVEAL — VEIL — covers [Q1: what you built] + [Q5: what makes it different]
+============================================================
+[~35 sec / ~85 words]
+
+This is why we built VEIL.
+
+VEIL finds the obvious sensitive details automatically — names, emails, IDs, financial figures —
+and it catches what a human reviewer typically misses: unlabeled names, and combinations of
+"safe" details that together aren't safe at all.
+
+But here's the part that matters most: VEIL doesn't make the call for you. It surfaces every
+risk, explains why it's flagged, and puts the decision in your hands. You decide what gets
+desensitised. VEIL's job is making sure you never miss what you needed to decide on.
+
+SHOW: VEIL's logo/name card, then cut into the app — findings list populating on the example memo.
+ON-SCREEN TEXT: "VEIL doesn't decide for you. It makes sure YOU don't miss anything."
+(This is the single most important line in the video — protect it in editing.)
+
+============================================================
+3. ARCHITECTURE & SECURITY — covers [Q4: how it addresses it] + part of [Q7: technically cool]
+============================================================
+[~30 sec / ~70 words]
+
+Under the hood: pattern detection for the obvious cases, an optional AI pass for the ones that
+aren't, and a relationship engine that flags dangerous combinations — every suggestion
+independently checked against the source document before it's ever shown to you.
+
+And critically: everything runs locally, in the browser. No cloud calls, no external network,
+ever, by default — which is the only way a tool like this could sit inside an air-gapped,
+classified environment at all, reviewing documents without anything leaving the boundary it's
+protecting.
+
+SHOW: A simple architecture beat — three boxes (Pattern detection / Local AI / Relationship
+engine) all inside a single "your machine, no network" boundary — then the AI-assisted panel with
+the "sent to your AI endpoint this session" badge, pointed at localhost.
+ON-SCREEN TEXT: "No cloud. No external calls. Built to run inside the boundary."
+
+============================================================
+4. BRIEF DEMO (can be a mock walkthrough) — covers [Q6: key features]
+============================================================
+[~35 sec / ~65 words]
+
+Here's VEIL on a fictional vendor memo. Findings appear instantly. An unlabeled name gets caught.
+The relationship graph flags a name and a figure that are too closely tied to keep separately.
+You decide — mask or keep, item by item — and only once everything's been reviewed does VEIL let
+you export: a redacted copy, and a separate review record showing exactly what was checked.
+
+SHOW: Fast-cut mock walkthrough — load doc, findings populate, click a flagged relationship in the
+graph, toggle a decision, export button lighting up, review record opening.
+ON-SCREEN TEXT (one per cut): "Findings, instantly" / "Catches what you'd miss" / "You decide" /
+"Clean export + review record"
+
+============================================================
+5. SUMMARY — covers remainder of [Q7: technically cool] as a closing beat
+============================================================
+[~20 sec / ~45 words]
+
+VEIL is the review step between a sensitive document and the outside world. It doesn't replace
+your judgement — it makes sure your judgement has everything it needs, verified, and never sent
+anywhere it shouldn't be. The best redaction tool isn't the one that decides for you. It's the one
+that makes sure you never miss what you needed to decide on.
+
+SHOW: Return to the VEIL name card.
+ON-SCREEN TEXT: "VEIL — the review step you can't afford to skip."
+
+============================================================
+6. CLOSING SLIDE — CREDITS
+============================================================
+[~5 sec / no narration — static generated slide, let it sit in silence or under a soft outro]
+
+ON-SCREEN TEXT:
+"Video walkthrough orchestrated by AI
+Voice reference: https://www.facebook.com/SingaporeDSTA/videos/roy-understood-the-assignment-and-slayed-so-did-our-engineers-%EF%B8%8Fdsta-defencescien/580525721429519/
+Done by Group 11"
+
+SHOW: A single generated end-card / title slide (any slide or AI image tool works) — cut straight
+to this static slide for the final few seconds, no screen recording needed here.
+
+============================================================
+NOTES FOR YOU
+============================================================
+- Total narration across sections 0-5 is roughly 370 words (~2:30 at a natural pace), leaving
+  real breathing room for the demo cuts and the credits slide — more slack than v1's flat
+  structure had, since a narrative arc needs pauses/beats that a straight Q&A doesn't.
+- Section 2's tagline ("VEIL doesn't decide for you. It makes sure YOU don't miss anything.") is
+  the thesis of the whole video — if you only nail the delivery of one line, make it that one.
+- The demo in section 4 can absolutely be mocked/staged rather than a live unscripted run — pick
+  the cleanest example that shows the graph catching a real-looking risk, even if you set it up
+  deliberately.
+- Don't drop the "doesn't authorise release / doesn't replace your approval process" framing —
+  it's now embedded directly into section 2's tagline instead of sitting as a separate caveat, so
+  it should survive naturally even under aggressive editing.
+- Every one of the 7 original talking points (what/why/problem/solution/different/features/
+  technically-cool) is still covered — check the [Q#] tags per section if you need to verify
+  nothing got dropped while restructuring.
+- Everything above reflects what's actually built and tested this session — nothing aspirational.
+  If a feature gets cut before the demo, cut its line here too.

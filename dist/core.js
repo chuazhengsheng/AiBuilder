@@ -90,7 +90,7 @@
    }
    if(!ranges.length)continue;
    n++;
-   extra.push({id:'link'+n,type:'person',value:surname,placeholder:e.placeholder,reason:'May be another reference to '+e.value+', which you chose to mask above. Confirm before masking.',ranges,decision:'pending',linkedTo:e.id,linked:true});
+   extra.push({id:'link'+n,type:'person',value:surname,placeholder:e.placeholder,reason:'Masked by default as a likely re-mention of '+e.value+', which you masked above. Switch to Keep if this is a different '+surname+'.',ranges,decision:'pending',linkedTo:e.id,linked:true});
   }
   return extra;
  }
@@ -128,7 +128,7 @@
   }
   return out;
  }
- const friendlyType={person:'Name',email:'Email address',phone:'Phone number',id:'Identity number',amount:'Monetary value',custom:'Custom term'};
+ const friendlyType={person:'Name',email:'Email address',phone:'Phone number',id:'Identity number',amount:'Monetary value',custom:'Custom term',instruction:'Instruction match'};
  // Flags kept-detail pairs that are actually, directly related (see relatedPairs), since the combination can identify someone even when no single item does.
  function residualRisk(text,entities){
   const strong=relatedPairs(text,entities);
@@ -161,5 +161,17 @@
  function crossDocumentLeaks(entities,otherText){
   return crossDocumentMatches(entities,otherText).filter(e=>e.decision==='mask');
  }
- const api={detect,redact,operations,escapeHtml,linkedMentions,residualRisk,coOccurrence,crossDocumentMatches,crossDocumentLeaks,unscannedSentences,verifyAiNames,aiCandidates};root.VeilCore=api;if(typeof module!=='undefined')module.exports=api;
+ // Terms worth asking "is this publicly known?" — emails/phones/IDs/amounts have no meaningful public/private status on their own, so only names and reviewer-added terms (which cover org/project names) are offered.
+ function publicCheckCandidates(entities){
+  const seen=new Set();const out=[];
+  for(const e of entities){
+   if(e.type!=='person'&&e.type!=='custom')continue;
+   const key=e.value.toLowerCase();
+   if(seen.has(key))continue;
+   seen.add(key);
+   out.push({id:e.id,value:e.value});
+  }
+  return out;
+ }
+ const api={detect,redact,operations,escapeHtml,linkedMentions,residualRisk,coOccurrence,crossDocumentMatches,crossDocumentLeaks,unscannedSentences,verifyAiNames,aiCandidates,publicCheckCandidates,splitSentences};root.VeilCore=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
